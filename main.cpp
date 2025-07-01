@@ -12,6 +12,12 @@ void sleep_for_ms(size_t ms) {
 }
 
 vector<vector<char>> init(){
+    //TODO: изменить форму корабля:
+    /*
+     *
+     **
+     *
+    */
     vector<vector<char>> field(31);
     for(int i = 0; i < 31; i++){
         field[i].resize(81);
@@ -61,7 +67,7 @@ bool check_move(vector<vector<char>> game){
     return true;
 }
 
-void game_step(vector<vector<char>> &game){
+void game_step(vector<vector<char>> &game){//TODO: добавить проверку
     vector<vector<char>> game_copy = game;
     for(int i = 0; i < 31; i++){
         for(int j = 0; j < 81; j++){
@@ -73,7 +79,7 @@ void game_step(vector<vector<char>> &game){
     }
 }
 
-void move_space_ship_up(vector<vector<char>> &game){
+void move_space_ship_up(vector<vector<char>> &game){//TODO: добавить проверку
     vector<vector<char>> game_copy = game;
     for(int i = 0; i < 31; i++){
         for(int j = 0; j < 81; j++){
