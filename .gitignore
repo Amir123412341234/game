@@ -1,0 +1,11 @@
+thirdparty/PDCurses/PDCurses.pro.user
+thirdparty/PDCurses/win32/*.o
+thirdparty/PDCurses/win32/*.a
+thirdparty/PDCurses/win32/*.dll
+
+build/*
+
+*.o
+*.a
+
+*.pro.user
