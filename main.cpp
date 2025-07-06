@@ -26,6 +26,9 @@ vector<vector<char>> init(){
         }
     }
     field[15][0] = '*';
+    field[14][0] = '*';
+    field[16][0] = '*';
+    field[15][1] = '*';
     return field;
 }
 
@@ -71,9 +74,12 @@ void game_step(vector<vector<char>> &game){//TODO: добавить провер
     vector<vector<char>> game_copy = game;
     for(int i = 0; i < 31; i++){
         for(int j = 0; j < 81; j++){
-            if(game_copy[i][j] == '#'){
+            if(game_copy[i][j] == '#' and game_copy[i][j-1] != '*'){
                 game[i][j] = '.';
                 game[i][j-1] = '#';
+            }else if(game_copy[i][j] == '#' and game_copy[i][j-1] == '*'){
+                printw("You are lost");
+                break;
             }
         }
     }
@@ -83,8 +89,12 @@ void move_space_ship_up(vector<vector<char>> &game){//TODO: добавить п�
     vector<vector<char>> game_copy = game;
     for(int i = 0; i < 31; i++){
         for(int j = 0; j < 81; j++){
-            if(game_copy[i][j] == '*'){
+            if(game_copy[i][j] == '*' and game_copy[i-1][j] != '*'){
                 game[i][j] = '.';
+                game[i-1][j] = '*';
+            }else if(game_copy[i][j] == '*' and game_copy[i-1][j] == '*' and game_copy[i+1][j] != '*'){
+                game[i][j] = '.';
+            }else if(game_copy[i][j] == '*' and game_copy[i-1][j] == '*' and game_copy[i+1][j] == '*'){
                 game[i-1][j] = '*';
             }
         }
@@ -95,8 +105,12 @@ void move_space_ship_down(vector<vector<char>> &game){
     vector<vector<char>> game_copy = game;
     for(int i = 0; i < 31; i++){
         for(int j = 0; j < 81; j++){
-            if(game_copy[i][j] == '*'){
+            if(game_copy[i][j] == '*' and game_copy[i+1][j] != '*'){
                 game[i][j] = '.';
+                game[i+1][j] = '*';
+            }else if(game_copy[i][j] == '*' and game_copy[i+1][j] == '*' and game_copy[i-1][j] != '*'){
+                game[i][j] = '.';
+            }else if(game_copy[i][j] == '*' and game_copy[i+1][j] == '*' and game_copy[i-1][j] == '*'){
                 game[i+1][j] = '*';
             }
         }
